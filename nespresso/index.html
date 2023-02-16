@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="height=device-height, 
+    width=device-width, initial-scale=1.0, 
+    minimum-scale=1.0, maximum-scale=1.0, 
+    user-scalable=no, target-densitydpi=device-dpi">
+    <title>Nespresso</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/7ba6142353.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="main">
+        <header>
+            <div class="logo"><img src="./assets/logo-white.svg" alt=""></div>
+            <div class="isclient box">
+                <h2>ALREADY A NESPRESSO CUSTOMER ?</h2>
+                <p>
+                    SELECT "YES" FOR THE QUESTION "HAVE YOU EVER BOUGHT NESPRESSO COFFEE ?"<br>
+        
+                    INDICATE YOUR CLIENT NUMBER & POSTAL CODE<br>
+        
+                    THEN YOU CAN CONTINUOUSLY BENEFIT FROM THE REWARDS PROGRAM.<br>
+                </p>
+            </div>
+        </header>
+        <section>
+            <form action="" method="post">
+            <div class="form box">
+                <fieldset class="firstfield">
+                    <p class="orderq">
+                        <strong>Have you placed an online order before?</strong><br>
+        Then you already have an online account and you can log-in <a href="">here</a><br>
+        If not, you can activate your online account below and place your first online order.
+                    </p>
+                    <p class="forms">
+                        <label for="Firstname">First name <span class="asterisk">*</span></label>
+                        <input type="text" required name="Firstname" id="Firstname" autofocus>
+                    </p>
+                    <p class="forms">
+                        <label for="Lastname">Last name <span class="asterisk">*</span></label>
+                        <input type="text" required name="Lastname" id="Lastname">
+                    </p>
+                    <p class="forms">
+                        <label for="Email">Email address <span class="asterisk">*</span></label>
+                        <input type="email" required name="Email" id="Email">
+                    </p>
+                    <p class="forms">
+                    <label for="password">Password <span class="asterisk">*</span></label>
+                        <input type="password" required name="Password" id="password">
+                        <ul class="passwordlist">
+                            <span>Password must:</span>
+                            <li>Have at least 8 characters</li>
+                            <li>Contain a number</li>
+                            <li>Contain a lower case letter</li>
+                            <li>contain a capital letter</li>
+                        </ul>
+                    </p>
+                </fieldset>
+            </div>
+            <div class="banner"><p>NESPRESSO CLUB MEMBERSHIP</p></div>
+        
+            <div class="box bottom">
+                <p>
+                    <!-- <input type="radio" name="membership" id="nonmember" value="nonmember"> -->
+                    <label for="nonmember">No, I do not have a <em>Nespresso</em> Club Membership number</label>
+                </p>
+                <p>
+                    <input type="radio" name="membership" id="member" value="member">
+                    <label for="member">Yes, I do have a <em>Nespresso</em> Club Membership number</label>
+                </p>
+                <input type="radio" name="membership" id="nonmember" value="nonmember" class="visually-hidden">
+                <div class="disappear">
+                    <fieldset class="membershipoption">
+                        <div>
+                            <div><label for="membershipno">Membership number*</label></div>
+                            <div class="membershipno">
+                                <input type="number" name="membershipno" id="membershipno">
+                                <a>Where can you find your membership number? ></a>
+                            </div>
+ 
+                        </div>
+                        <div class="membershippostal">
+                            <div><label for="postalcode">My postal code*</label></div>
+                            <div><input type="number" name="postalcode" id="postalcode" ></div>
+
+                        </div>
+                    </fieldset>
+                </div>
+                <div class="submitbox"><p>By clicking on "Continue", you acknowledge having read <em>Nespresso</em><a href="">Privacy Notice</a></p>
+                    <button class="submit" type="submit" name="submit" id="submit" value="CONTINUE">
+                        <span>CONTINUE</span>
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+        </form>
+        </section>
+        <footer>
+            <div class="bottombanner">
+                <div class="language">
+                    <img src="./assets/fr.png_impolicy=small&imwidth=24" alt="">
+                        <select name="|" id="|">
+                            <option value="EN">English</option>
+                            <option value="FR">Francais</option>
+                        </select>
+                </div>
+                <div>
+                    <div class="links">
+                        <ul class="toplink">
+                            <li><a href="">CONTACT</a></li>
+                            <li><a href="">STORE LOCATOR</a></li>
+                            <li><a href="">EVENTS</a></li>
+                            <li><a href="">CAREERS</a></li>
+                            <li><a href="">PRESS ROOM</a></li>
+                            <li><a href="">ENTERPRISE DURABLE</a></li>
+                            <li><a href="">GLOSSARY</a></li>
+                            <li><a href="">SITEMAP</a></li>
+                        </ul>
+                    </div>
+                    <div class="links">
+                        <ul class="botlink">
+                            <li><a href="">LEGAL</a></li>
+                            <li><a href="">CODE OF ANTITRUST</a></li>
+                            <li><a href="">TECHNICAL COMMUNICATION</a></li>
+                            <li><a href="">CANCELLATION</a></li>
+                            <li><a href="">COOKIES  </a></li>
+                            <li><a href="">PROTECTION DES DONNEES</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="bottombar">
+                <div class="socials">
+                    <span>Follow <em>Nespresso</em></span>
+                    <div>
+                        <img src="./assets/facebook.svg" alt="">
+                        <img src="./assets/twitter.svg" alt="">
+                        <img src="./assets/insta.svg" alt="">
+                        <img src="./assets/linkedin.svg" alt="">
+                    </div>
+                </div>
+                <div class="middle">
+                    Top of the page <a href="#">^</a>
+                    <i></i>
+                </div>
+                <div class="right">
+                    <img src="./assets/logo-white.svg" alt="">
+                    <em>Nespresso</em> S.A. 2017
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>

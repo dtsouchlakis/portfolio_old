@@ -1,0 +1,571 @@
+body{
+    background-color: #000000;
+    font-family: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif   ;
+    margin:auto;
+    letter-spacing: 0.96px;
+    width: 100%;
+}
+
+html{
+    margin:auto;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+header{
+    /* position: relative; */
+}
+.box{
+    background-color: #f9f9f9;
+}
+
+.main{
+    width: 997px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    font-size: 12px;
+    line-height: 18px;
+}
+
+.logo{
+    margin:0 auto;
+    width: 100%;
+    /* left: 0; */
+    position: fixed;
+    height: 60px;
+    background-color: #000000;
+    display: flex;
+    /* padding-top: 20px; */
+    z-index: 10000;
+}
+
+
+.logo img{
+    width: 10%;
+    
+
+}
+
+.isclient{
+    text-align: center;
+    padding: 4px;
+    margin-bottom: 20px;
+    
+}
+
+
+.isclient p{
+    color: #656565;
+}
+
+
+
+.orderq{
+    color: #656565;
+    margin-top: 40px;
+}
+
+.orderq a{
+    text-decoration: none;
+    color: #986f38;
+}
+
+.text {
+    margin: 10 6 10 6 ;
+}
+
+.firstfield{
+    width: 55%;
+}
+
+fieldset{
+    border: none;
+    display: flex;
+    flex-direction: column;
+
+}
+
+*{
+    outline: red solid 1px;
+}
+
+.forms{
+    /* padding-bottom: 20px; */
+    display: flex;
+    justify-content: space-between;
+    padding-left: 10px;
+    align-items: center;
+    height:fit-content ;
+
+}
+
+input:not(.box.bottom input){
+    width: 207px;
+    height: 44px;
+    border-radius: 3px;
+    border-color: lightgray;
+    margin-right: 30%;
+    
+}
+
+input{
+    border: 1px solid #d5d5d5;
+
+}
+.asterisk{
+    color: brown;
+    margin-left: 3px;
+}
+
+.passwordlist{
+    position: relative;
+    padding-left: 35%;
+}
+
+.passwordlist span{
+    position: relative;
+    display: block;
+    left:-15px;
+    margin:3px
+}
+
+p:not(.box.bottom p){
+    margin: 8px;
+}
+
+.banner{
+    background-color: #cccccc;
+    height: 78px;
+    align-items: center;
+    display: flex;
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 0;
+    padding-left: 20px;
+}
+.passwordlist li:not(:last-child) { 
+    margin-bottom: 3px;  
+ }
+
+
+
+.box.bottom p:first-of-type{
+    margin:0;
+}
+
+.box.bottom{
+    height: 262px;
+    font-size: 12px;
+    padding: 20px 0 0px 0;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+.box.bottom p{
+    padding-left: 10px;
+}
+.membershipoption{
+    padding: 20px 20px 25px 25px;
+    /* height: 100%; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.membershipoption input{
+    width: 437px;
+    height: 47px;
+    border-radius: 3px;
+    /* border-color: rgb(224, 210, 210) solid 0.1px; */
+    margin-left: 120px;
+    
+}
+
+.membershipoption div{
+    width:  60%;
+    display: flex;
+    margin: 5px;
+    /* justify-content: flex-start; */
+    
+
+}
+.membershipoption div div{
+    /* width:  50%; */
+    display: flex;
+    flex-direction: column;
+}
+
+.membershipoption div div a{
+    width: 100%;
+}
+
+.isclient.box{
+    margin-top: 80px;
+}
+
+footer{
+    display: flex;
+    flex-direction: column;
+    width: 996px;
+    height: 68px;
+    background-color: #1b1b1b;
+}
+
+footer ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #1b1b1b;
+
+}
+
+footer li{
+    float: right;
+    letter-spacing: normal;
+    font-size: 0.75;
+}
+
+
+button[type=submit]{
+    background-color: #3d8705;
+    border-radius: 3px;
+    color: white;
+    width: 200px;
+    height: 40px;
+    font-size: 14px;
+    border: none;
+}
+
+.submitbox{
+    display: flex;
+    justify-content: space-between;
+    background-color: #ffffff;
+    /* width: 100%; */
+    align-items: center;
+    height: 99px;
+    padding: 0px 20px 5px 20px;
+    border-top: #eee6e6 solid 0.7px;
+}
+
+.box.bottom{
+    height: fit-content;
+    margin-bottom: 20px;
+
+}
+
+.membershipoption a, .submitbox a{
+    color: #986f38;
+    text-decoration: none;
+}
+.language{
+    background-color: #1b1b1b;
+    display: flex;
+    align-items: center;
+}
+
+.language select{
+    width: 108px;
+    height: 40px;
+    border-radius: 3px;
+}
+
+.language img{
+    height: 24px;
+    width: 25px;
+    margin-right: 22px;
+    margin-left: 22px;
+}
+
+.bottombanner{
+    display: flex;
+    justify-content: space-between;
+}
+
+.links{
+    display: flex;
+    flex-direction: column;
+    height: 34px;
+    color: #000000;
+    text-align: start;
+}
+.links .toplink li:not(li:first-of-type){
+    border-right: 1px solid #cccccc;
+    padding-right: 6px;
+    padding-left: 6px;
+}
+.links .botlink li:not(li:first-of-type){
+    border-right: 1px solid #858585;
+    padding-right: 6px;
+    padding-left: 6px;
+}
+.links .botlink li:first-of-type{
+    padding-right: 6px;
+    padding-left: 6px;
+}
+.links .toplink li:first-of-type{
+    padding-right: 6px;
+    padding-left: 6px;
+}
+
+.toplink, .botlink{
+    margin-top: 8px;
+    margin-bottom: 8px;
+    
+}
+
+.toplink a{
+    color: #cccccc;
+    text-decoration: none;
+}
+
+.botlink a{
+    color: #858585;
+    text-decoration: none;
+}
+
+.bottombar{
+    display: flex;
+    height: 50px;
+    /* min-height: 50px; */
+    color: #cccccc;
+    justify-content: space-between;
+    padding: 10px 20px 10px 20px;
+    height: 118px;
+}
+
+.bottombar img{
+    width:15px;
+    height: 14px;
+}
+
+.socials{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 266px;
+    height: 20px;
+    font-size: 13px;
+    color: #cccccc;
+}
+
+.submitbox p{
+    color: #656565;
+}
+.submitbox a{
+    margin: 5px;
+}
+
+.middle{
+    color: white;
+    display: flex;
+    align-items: center;
+}
+
+.middle a{
+    border-radius: 50%;
+    text-decoration: none;
+    color: black;
+    background-color: white;
+    height: 12px;
+    width: 12px;
+    margin-left: 10px;
+    text-align: center;
+    display: inline-block;
+
+}
+.right{
+    color: #858585;
+    font-size: 12px;
+}
+
+.disappear{
+    overflow: hidden;
+    transition-duration: 500ms;
+    height: 200px;
+} 
+
+.visually-hidden{
+    position: absolute;
+    left: 0.9%;
+}
+#nonmember:checked + .disappear{
+    height: 0px;
+
+}
+
+label[for=nonmember]{
+    margin-left: 24px;
+}
+
+button i{
+    float: right;
+    margin-right: 15px;
+}
+
+.membershipno a{
+    position: relative;
+    right: -36%;
+}
+
+.isclient
+.right img{
+    width: 55px;
+    height: 10px;
+}
+
+@media screen and (max-width:995px){
+    .logo{
+        background-color:#1b1b1b;
+        /* height: 50px; */
+        /* margin-bottom: 5%; */
+    }
+    .logo img{
+        width: 12%;
+        margin-left: 3%;
+        height: 50%;
+    }
+    .main{
+        width: 100%;
+        margin: 0;
+        align-items: center;
+        
+    }
+    header{
+        width: 100%;
+    }
+    section{
+        width: 100%;
+    }
+    footer{
+        min-width: 768px;
+        width: auto;
+    }
+    input:not(.box.bottom input){
+        width: 40%;
+        /* margin-right: 0; */
+    }
+    .firstfield{
+        width: 100%;
+    }
+
+    body{
+        font-size:0.75em ;
+    }
+    .box.bottom input[type=number]{
+        width: 140%;
+    }
+    .box.bottom{
+        display: flex;
+    }
+
+}
+@media screen and (max-width:767px){
+    .logo{
+        background-color:#1b1b1b;
+        /* height: 50px; */
+        /* margin-bottom: 5%; */
+    }
+
+    .isclient{
+        font-size: 1.005rem;
+    }
+
+    .logo img{
+        width: 12%;
+        margin-left: 3%;
+        height: 50%;
+    }
+    .main{
+        width: 100%;
+        margin: 0;
+        align-items: center;
+        
+    }
+    header{
+        width: 100%;
+    }
+    section{
+        width: 100%;
+    }
+    footer{
+        min-width: 768px;
+        width: auto;
+    }
+    input:not(.box.bottom input){
+        width: 100%;
+        margin: 3%;
+        /* margin-right: 0; */
+    }
+    .box.bottom input[type=number]{
+        width: 200%;
+        margin-left: 0;
+    }
+    .membershipoption div{
+        width: 100%;
+        position: relative;
+        left: -25%;
+        /* height: fit-content; */
+        /* position: relative; */
+    }
+    .membershippostal{
+        width: 100%;
+    }
+    .membershipno input{
+        /* position: relative; */
+    }
+    .membershipno{
+        /* left: -50%; */
+    }
+    .firstfield{
+        width: 100%;
+        /* margin: auto; */
+    }
+
+    body{
+        font-size:0.75em ;
+    }
+    label{
+        position: absolute;
+        left: 8%;
+        color: #858585;
+    }
+    .forms{
+        padding: 0;
+        margin: 0;
+    }
+    .passwordlist{
+        float: left;
+        padding-left: 6%;
+    }
+    label[for=membershipno], label[for=postalcode]{
+        left: 106%;
+        margin-top:5%;
+
+        z-index: 10000;
+        width: 100%;
+    }
+    /* .membershipoption div div{
+        position: absolute;
+    }
+    */
+    .membershipoption div div a{
+        width: 200%;
+        left: 0;
+    }
+    .submitbox{
+        flex-direction: column;
+    }
+    button[type=submit]{
+        width: 100%;
+    }
+    /*
+    .membershipoption{
+        padding: 5%;
+        height: 100%;
+    }
+    .disappear{
+        height: 100%;
+    } */
+}

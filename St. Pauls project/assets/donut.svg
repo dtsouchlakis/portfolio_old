@@ -1,0 +1,7 @@
+<svg xmlns='http://www.w3.org/2000/svg' width='400' height='400'> 
+  <clipPath id='doughnut-path'> 
+    <path d='M0,200 A200,200 0,1,1 400,200 A200,200 0,1,1 0,200 z 
+           M100,200 A100,100 0,1,1 300,200 A100,100 0,1,1 100,200 z' 
+           clip-rule='evenodd'/> 
+  </clipPath>
+</svg> 

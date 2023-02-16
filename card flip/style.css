@@ -1,0 +1,116 @@
+body {
+    text-align: center;
+    font-size: 1.5rem;
+    height: 100vh;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    background: #000000;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #0f9b0f, #000000);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to left, #0f9b0f, #000000); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    color: white;
+    text-shadow: black 3px 4px 3px;
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+
+.cardcontainer{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 30px;
+    perspective: 1000px;
+    
+}
+button,input{
+    box-shadow: black 3px 4px 3px;
+    
+}
+.card:hover:not(.card.flip:hover){
+    /* scale: 1.05; */
+    transition-duration: 400ms;
+    transform: rotateY(-20deg);
+}
+
+.card{
+    background-color: transparent;
+    height: 300px;
+    width: 200px;
+    margin: 3px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: gray;
+    user-select: none;
+    /* border: 1px solid #f1f1f1; */
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: black 4px 6px 3px;
+}
+
+.flip-card-back.win{
+    background-color: green;
+    height: 300px;
+    width: 200px;
+    /* margin: 3px; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* color: black; */
+    user-select: none;
+}
+
+.flip-card-back.lose{
+    background-color: red;
+    height: 300px;
+    width: 200px;
+    /* margin: 3px; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* color: black; */
+    user-select: none;
+}
+
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.3s;
+    transform-style: preserve-3d;
+}
+
+.card.flip .flip-card-inner {
+    transform: rotateY(-180deg);
+}
+
+.flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden; /* Safari */
+    backface-visibility: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.flip-card-front {
+    /* background-color: #bbb; */
+    background-image: url(card\ back\ red.png); 
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    /* -webkit-background-size: cover; */
+    /* -moz-background-size: cover; */
+    /* -o-background-size: cover; */
+    color: black;
+}
+
+.flip-card-back{
+    /* background-color: dodgerblue; */
+    color: white;
+    transform: rotateY(180deg);
+    text-shadow: none;
+    font-size: 8rem;
+    
+  }
