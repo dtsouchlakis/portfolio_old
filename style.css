@@ -1,0 +1,95 @@
+/* Basic page styles */
+body {
+    font-family: 'Helvetica', sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #333;
+    margin: 0;
+  }
+  
+  h1, h2, h3 {
+    margin: 0;
+    font-weight: bold;
+  }
+  
+  a {
+    text-decoration: none;
+    color: #007bff;
+  }
+  
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Header styles */
+  header {
+    background-color: #007bff;
+    color: #fff;
+    padding: 1rem;
+  }
+  
+  header h1 {
+    font-size: 2rem;
+    margin: 0;
+  }
+  
+  nav ul {
+    display: flex;
+  }
+  
+  nav ul li {
+    margin-right: 1rem;
+  }
+  
+  /* Main content styles */
+  main {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 1rem;
+  }
+  
+  section {
+    margin-bottom: 2rem;
+  }
+  
+  section h2 {
+    margin-bottom: 1rem;
+  }
+  
+  section ul li {
+    margin-bottom: 1rem;
+  }
+  
+  /* Form styles */
+  form label, form input, form textarea {
+    display: block;
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+  
+  form input, form textarea {
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+  }
+  
+  form button[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+  }
+  
+  form button[type="submit"]:hover {
+    background-color: #0069d9;
+  }
+  
+  /* Footer styles */
+  footer {
+    background-color: #f8f9fa;
+    padding: 1rem;
+    text-align: center;
+  }
+  

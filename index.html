@@ -1,18 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio</title>
+  <meta charset="UTF-8">
+  <title>Web Developer Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="./script.js"></script>
 </head>
 <body>
-    <h1></h1>
-    <a href="./card flip/index.html">Card Flip</a>
-    <a href="./Tesla/index.html">Tesla</a>
-    <a href="./ticktacktoe/index.html">Tic Tac Toe</a>
-    <a href="./weatherApp/index.html">Weather App</a>
-    <a href="./St. Pauls project/index.html">St Pauls</a>
-    <a href="./nespresso/index.html">nespresso</a>
+  <header>
+    <h1>Web Developer Portfolio</h1>
+    <nav>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <section id="about">
+      <h2>About</h2>
+      <p>Introduce yourself and provide some background information about your web development experience and skills.</p>
+    </section>
+    <section id="projects">
+      <h2>Projects</h2>
+      <ul>
+        <li>
+          <h3>Project Name</h3>
+          <p>Project Description</p>
+          <a href="#">View Live Site</a>
+        </li>
+        <li>
+          <h3>Project Name</h3>
+          <p>Project Description</p>
+          <a href="#">View Live Site</a>
+        </li>
+        <!-- add more project examples as needed -->
+      </ul>
+    </section>
+    <section id="contact">
+      <h2>Contact</h2>
+      <form>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email">
+        <label for="message">Message:</label>
+        <textarea id="message" name="message"></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+    </section>
+  </main>
+  <footer>
+    <p>&copy; 2023 Web Developer Portfolio. All rights reserved.</p>
+  </footer>
 </body>
 </html>
