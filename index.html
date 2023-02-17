@@ -1,58 +1,115 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Web Developer Portfolio</title>
-  <link rel="stylesheet" href="style.css">
-  <script src="./script.js"></script>
-</head>
-<body>
-  <header>
-    <h1>Web Developer Portfolio</h1>
-    <nav>
-      <ul>
-        <li><a href="#about">About</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
-  <main>
-    <section id="about">
-      <h2>About</h2>
-      <p>Introduce yourself and provide some background information about your web development experience and skills.</p>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Web Developer Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <header>
+      <nav>
+        <ul>
+          <li><a href="#about-me">About Me</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#contact-me">Contact Me</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <section id="about-me">
+      <div class="container">
+        <h2>About Me</h2>
+        <div class="card">
+          <img src="https://via.placeholder.com/500x250" alt="Profile Picture">
+          <div class="card-body">
+            <h3>Jane Doe</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in convallis tellus. Vivamus ullamcorper quam non mi bibendum, eu convallis velit accumsan. Ut pellentesque vel augue eget feugiat. Nulla facilisi.</p>
+            <a href="#">View Resume</a>
+          </div>
+        </div>
+      </div>
     </section>
-    <section id="projects">
-      <h2>Projects</h2>
-      <ul>
-        <li>
-          <h3>Project Name</h3>
-          <p>Project Description</p>
-          <a href="#">View Live Site</a>
-        </li>
-        <li>
-          <h3>Project Name</h3>
-          <p>Project Description</p>
-          <a href="#">View Live Site</a>
-        </li>
-        <!-- add more project examples as needed -->
-      </ul>
+
+    <section id="skills">
+      <div class="container">
+        <h2>Skills</h2>
+        <div class="skill-bars">
+          <ul>
+            <li>
+              <span class="skill-name">HTML</span>
+              <div class="skill-bar">
+                <div class="skill-bar-fill" style="width: 90%"></div>
+              </div>
+            </li>
+            <li>
+              <span class="skill-name">CSS</span>
+              <div class="skill-bar">
+                <div class="skill-bar-fill" style="width: 80%"></div>
+              </div>
+            </li>
+            <li>
+              <span class="skill-name">JavaScript</span>
+              <div class="skill-bar">
+                <div class="skill-bar-fill" style="width: 70%"></div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
     </section>
-    <section id="contact">
-      <h2>Contact</h2>
-      <form>
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name">
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email">
-        <label for="message">Message:</label>
-        <textarea id="message" name="message"></textarea>
-        <button type="submit">Send Message</button>
-      </form>
+    <section id="projects" class="projects">
+      <h2>My Projects</h2>
+      <div class="project-cards">
+        <div class="project-card">
+          <div class="project-image" style="background-image: url('https://via.placeholder.com/300x200')"></div>
+          <div class="project-details">
+            <h3>Project 1</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In eu ex quis elit semper imperdiet. Proin id augue non elit luctus volutpat vel ac magna. Duis vel pharetra nisl.</p>
+            <a href="#" class="project-button">View Project</a>
+          </div>
+        </div>
+        <div class="project-card">
+          <div class="project-image" style="background-image: url('https://via.placeholder.com/300x200')"></div>
+          <div class="project-details">
+            <h3>Project 2</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In eu ex quis elit semper imperdiet. Proin id augue non elit luctus volutpat vel ac magna. Duis vel pharetra nisl.</p>
+            <a href="#" class="project-button">View Project</a>
+          </div>
+        </div>
+        <div class="project-card">
+          <div class="project-image" style="background-image: url('https://via.placeholder.com/300x200')"></div>
+          <div class="project-details">
+            <h3>Project 3</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In eu ex quis elit semper imperdiet. Proin id augue non elit luctus volutpat vel ac magna. Duis vel pharetra nisl.</p>
+            <a href="#" class="project-button">View Project</a>
+          </div>
+        </div>
+      </div>
     </section>
-  </main>
-  <footer>
-    <p>&copy; 2023 Web Developer Portfolio. All rights reserved.</p>
-  </footer>
-</body>
+    
+    <section id="contact-me">
+      <div class="container">
+        <h2>Contact Me</h2>
+        <form class="contact-form">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" required>
+
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required>
+
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="5" required></textarea>
+
+          <button type="submit">Send</button>
+          <div class="form-status"></div>
+        </form>
+      </div>
+    </section>
+
+    <footer>
+      <p>&copy; 2023 Jane Doe</p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
 </html>
