@@ -147,12 +147,13 @@ function projectWin() {
 
       exitMenu.addEventListener("click", () => {
         document.body.removeChild(newDiv);
+        main.style.cursor = "auto";
       });
       e.stopPropagation();
       main.addEventListener("click", (e) => {
         console.log(e.currentTarget);
         document.body.removeChild(newDiv);
-        main.style.cursor = "none";
+        main.style.cursor = "auto";
         e.stopPropagation();
       });
       console.log(e.target);
