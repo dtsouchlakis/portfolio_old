@@ -1,318 +1,338 @@
-/* Basic page styles */
-body {
-  font-family: 'Open Sans', sans-serif;
-  font-size: 16px;
-  line-height: 1.5;
-  color: #333;
-  margin: 0;
-}
-
-h1, h2, h3 {
-  margin: 0;
-  font-weight: bold;
-}
-
-a {
-  text-decoration: none;
-  color: #007bff;
-}
-
-ul {
-  list-style: none;
+* {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
-/* Header styles */
+body {
+  font-family: Metropolis, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol", "Noto Color Emoji";
+  font-size: 16px;
+  color: #2c3e50;
+}
+
 header {
-  background-color: #333;
-  color: #fff;
-  padding: 1rem;
   display: flex;
-  align-items: center;
   justify-content: space-between;
+  align-items: center;
+  padding: 12px;
+  background-color: 2c3e50;
+  color: #fff;
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 9999;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  top: 0px;
+  width: 100vw;
+  transition-duration: 100ms;
+  z-index: 100;
 }
 
-header h1 {
-  font-size: 2rem;
+.profile {
+  /* display: flex; */
+  /* align-items: center; */
+}
+
+.profile-picture {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+.container.nav {
   margin: 0;
 }
-
+header h1 {
+  margin-left: 20px;
+  font-size: 1.9rem;
+}
 nav ul {
   display: flex;
+  justify-content: flex-end;
+  list-style: none;
+  font-size: 1.1rem;
 }
 
 nav ul li {
-  margin-right: 1rem;
+  margin-right: 20px;
 }
 
-/* Main content styles */
-main {
-  max-width: 800px;
-  margin: 5rem auto 0;
-  padding: 1rem;
-}
-
-section {
-  margin-bottom: 2rem;
-}
-
-section h2 {
-  margin-bottom: 1rem;
-  font-size: 1.5rem;
-  color: #333;
-  text-transform: uppercase;
-  border-bottom: 2px solid #ccc;
-}
-
-section ul li {
-  margin-bottom: 1rem;
-}
-
-/* Form styles */
-form label, form input, form textarea {
-  display: block;
-  width: 100%;
-  margin-bottom: 1rem;
-}
-
-form input, form textarea {
-  padding: 0.5rem;
-  border: 1px solid #ccc;
-  border-radius: 3px;
-}
-
-form button[type="submit"] {
-  background-color: #007bff;
+nav ul li a {
   color: #fff;
-  border: none;
-  padding: 0.5rem 1rem;
-  cursor: pointer;
-  border-radius: 3px;
+  text-decoration: none;
+  transition: color 0.3s ease;
 }
 
-form button[type="submit"]:hover {
-  background-color: #0069d9;
+nav ul li a:hover {
+  color: #bbb;
 }
 
-/* Footer styles */
-footer {
-  background-color: #f8f9fa;
-  padding: 1rem;
-  text-align: center;
-  margin-top: 5rem;
-}
-
-/* Button styles */
-.btn {
-  display: inline-block;
-  padding: 0.5rem 1rem;
-  border: none;
-  border-radius: 3px;
-  font-size: 1rem;
-  font-weight: bold;
-  color: #fff;
-  text-align: center;
-  background-color: #007bff;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
-}
-
-.btn:hover {
-  background-color: #0069d9;
-}
-
-.btn-secondary {
-  background-color: #ccc;
-}
-
-.btn-secondary:hover {
-  background-color: #aaa;
-}
-
-/* Project card styles */
-.card {
-  background-color: #fff;
-  border: 1px solid #ccc;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  border-radius: 3px;
-  overflow: hidden;
-  margin-bottom: 2rem;
-}
-
-.card img {
-  width: 100%;
-  height: auto;
-  object-fit: cover;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
-}
-
-.card .card-body {
-  padding: 1rem;
-}
-
-.card h3 {
-  margin-top: 0;
-  font-size: 1.25rem;
-  color: #333;
-}
-
-.card p {
-  margin-bottom: 1rem;
-}
-
-.card a {
-  display: inline-block;
-  padding: 0.5rem 1rem;
-  border: none;
-  border-radius: 3px;
-  font-size: 1rem;
-  font-weight: bold;
-  color: #fff;
-  text-align: center;
-  background-color: #007bff;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
-}
-
-.card a:hover {
-  background-color: #0069d9;
-}
-
-/* Skill bar styles */
-.skill-bars {
-  margin: 2rem 0;
-}
-
-.skill-bars ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.skill-bars li {
-  margin-bottom: 1rem;
-}
-
-.skill-bars .skill-name {
-  margin-bottom: 0.5rem;
-  font-weight: bold;
-}
-
-.skill-bars .skill-bar {
-  position: relative;
-  height: 10px;
-  border-radius: 5px;
-  background-color: #eee;
-}
-
-.skill-bars .skill-bar-fill {
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  background-color: #007bff;
-  border-radius: 5px;
-  transition: width 0.5s ease;
-}
-
-/* Contact form styles */
-.contact-form label, .contact-form input, .contact-form textarea {
-  display: block;
-  width: 100%;
-  margin-bottom: 1rem;
-}
-
-.contact-form input, .contact-form textarea {
-  padding: 0.5rem;
-  border: 1px solid #ccc;
-  border-radius: 3px;
-}
-
-.contact-form button[type="submit"] {
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  padding: 0.5rem 1rem;
-  cursor: pointer;
-  border-radius: 3px;
-}
-
-.contact-form button[type="submit"]:hover {
-  background-color: #0069d9;
-}
-
-.contact-form .form-status {
-  margin-top: 1rem;
-  font-weight: bold;
-  color: #007bff;
-}
-.projects {
-  background-color: #202020;
-  color: #fff;
-  padding: 50px 0;
-}
-
-.projects h2 {
-  text-align: center;
-  margin-bottom: 50px;
-  font-size: 2.5rem;
-}
-
-.project-cards {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  flex-wrap: wrap;
-}
-
-.project-card {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 300px;
-  height: 400px;
-  background-color: #282828;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  border-radius: 5px;
-  overflow: hidden;
-  margin: 20px;
-}
-
-.project-image {
-  width: 100%;
-  height: 70%;
-  background-size: cover;
-  background-position: center;
-}
-
-.project-details {
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
   padding: 20px;
 }
-
-.project-details h3 {
-  margin-top: 0;
+.profile {
+}
+.about {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-size: cover;
+  background-color: 18bc9c;
+  background-position: center;
+  color: #fff;
+  text-align: end;
 }
 
-.project-details p {
-  font-size: 0.9rem;
+.about h2 {
+  font-size: 72px;
   margin-bottom: 20px;
 }
 
-.project-button {
+.about p {
+  font-size: 24px;
+  margin-bottom: 40px;
+  width: 80%;
+}
+.about .container {
+  display: flex;
+  justify-content: space-between;
+  text-align: justify;
+}
+.btn {
   display: inline-block;
-  padding: 10px 15px;
-  background-color: #428bca;
-  color: #fff;
-  text-decoration: none;
+  padding: 10px 20px;
+  border: none;
   border-radius: 3px;
+  font-size: 18px;
+  text-decoration: none;
+  color: #fff;
+  background-color: rgb(44, 62, 80);
+  transition: background-color 0.3s ease;
 }
 
+.btn-primary {
+  /* background-color: #e4e4ea; */
+}
+
+.btn:hover {
+  background-color: rgb(24, 39, 53);
+  cursor: pointer;
+}
+
+.projects {
+  background-color: #f7f7f7;
+  text-align: center;
+  display: flex;
+}
+
+.projects h2 {
+  font-size: 48px;
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 40px;
+  /* position: relative; */
+  width: 100%;
+}
+
+.project {
+  margin: 15px;
+  /* display: flex; */
+  /* flex-direction: column; */
+  border-radius: 4px;
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.08) 0px 3px 6px 0px,
+    rgba(0, 0, 0, 0.15) 0px 3px 6px 0px;
+  height: 300px;
+  /* width: 30%; */
+  overflow: hidden;
+  cursor: pointer;
+  position: relative;
+}
+
+.project img {
+  align-self: center;
+  max-width: 100%;
+  /* margin-bottom: 20px; */
+}
+.projects .container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.project div {
+  display: none;
+}
+.job {
+  margin: 22px;
+}
+.skills {
+  background-color: white;
+}
+
+.skills h2 {
+  font-size: 48px;
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+
+.skills ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  list-style: none;
+}
+.skills ul li {
+  display: inline-block;
+  margin: 7px;
+  padding: 5px 10px;
+  color: #374054;
+  background: #e4e4ea;
+  list-style: none;
+  cursor: default;
+  font-size: 1.2em;
+}
+.skill {
+  padding: 10px 20px;
+  margin: 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  font-size: 18px;
+}
+
+.contact {
+  background-color: #18bc9c;
+  color: white;
+}
+
+.contact h2 {
+  font-size: 48px;
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+label {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+input,
+textarea {
+  padding: 10px;
+  margin-bottom: 20px;
+  border: none;
+  border-radius: 3px;
+  font-size: 18px;
+}
+
+textarea {
+  height: 200px;
+}
+
+button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 3px;
+  font-size: 18px;
+  text-decoration: none;
+  color: #fff;
+  background-color: #007bff;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #444;
+}
+
+footer {
+  background-color: #2c3e50;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+}
+footer p {
+  text-align: center;
+}
+footer .container {
+  display: flex;
+  justify-content: space-between;
+}
+footer .footerdiv li {
+  list-style-type: none;
+}
+footer a {
+  color: #fff;
+  text-decoration: none;
+}
+
+footer a:hover {
+  color: #bbb;
+}
+
+footer .container ul {
+  display: flex;
+}
+
+footer .container ul li {
+  margin: 10px;
+}
+.fa-brands {
+  font-size: 20px;
+}
+footer div ul {
+  display: flex;
+  justify-content: space-between;
+  list-style-type: none;
+}
+.experience {
+  background-color: #18bc9c;
+  color: white;
+}
+.hide {
+  top: -100px;
+}
+.window {
+  display: block;
+  height: 90vh;
+  width: 90vw;
+  position: fixed;
+  background-color: #18bc9c;
+  top: 5%;
+  left: 5%;
+  z-index: 101;
+  color: white;
+  text-align: center;
+}
+
+.window h1 {
+  margin: 50px;
+}
+.window img {
+  margin: 20px;
+}
+.window p {
+  margin: 15px;
+}
+.window a {
+  text-decoration: none;
+  color: #374054;
+}
+.exitIcon {
+  position: absolute;
+  top: 0;
+  width: 1.4rem;
+  right: 0;
+}
+.exitIcon:hover {
+  scale: 1.3;
+  cursor: pointer;
+}

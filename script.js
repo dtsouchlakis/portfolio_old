@@ -1,101 +1,164 @@
-const form = document.querySelector('.contact-form');
-const formStatus = form.querySelector('.form-status');
-
-form.addEventListener('submit', event => {
-  event.preventDefault();
-
-  const name = form.querySelector('#name').value;
-  const email = form.querySelector('#email').value;
-  const message = form.querySelector('#message').value;
-
-  formStatus.innerHTML = 'Sending...';
-
-  fetch('https://example.com/send-email', {
-    method: 'POST',
-    body: JSON.stringify({ name, email, message }),
-    headers: { 'Content-Type': 'application/json' }
-  })
-  .then(response => {
-    if (response.ok) {
-      form.reset();
-      formStatus.innerHTML = 'Message sent!';
-    } else {
-      throw new Error('Network response was not ok');
+// Smooth scrolling effect for links
+$(document).ready(function () {
+  $('a[href^="#"]').on("click", function (event) {
+    var target = $(this.getAttribute("href"));
+    if (target.length) {
+      event.preventDefault();
+      $("html, body").stop().animate(
+        {
+          scrollTop: target.offset().top,
+        },
+        1000
+      );
     }
-  })
-  .catch(error => {
-    formStatus.innerHTML = `An error occurred: ${error.message}`;
   });
 });
-const projects = [
-  {
-    title: "Project 1",
-    image: "https://via.placeholder.com/300x200",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In eu ex quis elit semper imperdiet. Proin id augue non elit luctus volutpat vel ac magna. Duis vel pharetra nisl.",
-    link: "#"
+
+const header = document.querySelector("header");
+window.addEventListener("scroll", checkScroll);
+var doc = document.documentElement;
+var w = window;
+const projects = doc.querySelectorAll(".project");
+
+var prevScroll = w.scrollY || doc.scrollTop;
+var curScroll;
+var direction = 0;
+var prevDirection = 0;
+const main = doc.querySelector("main");
+const projectsList = {
+  project1: {
+    title: "my project",
+    link: "www.github.com",
+    description:
+      " nam  voluptatem aliquam! Iste obcaecati quidem fugit deleniti quia in nisi fuga error hic. Blanditiis beatae magni consequatur. Sint distinctio, corporis animi eveniet asperiores tempora. Deleniti impedit, eveniet sit optio modi, tenetur sint, maxime deserunt porro quod dolor animi quibusdam cum quaerat unde id. Numquam labore ut dolor assumenda possimus impedit, eligendi ipsa accusamus incidunt quaerat in officiis at neque animi ullam nihil atque reiciendis? Sint, eius soluta? Suscipit nam iure quas accusantium, soluta natus culpa incidunt explicabo non maxime quos. Ipsam, et eveniet.",
+    photo: "./assets/project.jpg",
   },
-  {
-    title: "Project 2",
-    image: "https://via.placeholder.com/300x200",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In eu ex quis elit semper imperdiet. Proin id augue non elit luctus volutpat vel ac magna. Duis vel pharetra nisl.",
-    link: "#"
+  project2: {
+    title: "my project",
+    link: "www.github.com",
+    description:
+      " nam  voluptatem aliquam! Iste obcaecati quidem fugit deleniti quia in nisi fuga error hic. Blanditiis beatae magni consequatur. Sint distinctio, corporis animi eveniet asperiores tempora. Deleniti impedit, eveniet sit optio modi, tenetur sint, maxime deserunt porro quod dolor animi quibusdam cum quaerat unde id. Numquam labore ut dolor assumenda possimus impedit, eligendi ipsa accusamus incidunt quaerat in officiis at neque animi ullam nihil atque reiciendis? Sint, eius soluta? Suscipit nam iure quas accusantium, soluta natus culpa incidunt explicabo non maxime quos. Ipsam, et eveniet.",
+    photo: "./assets/project.jpg",
   },
-  {
-    title: "Project 3",
-    image: "https://via.placeholder.com/300x200",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In eu ex quis elit semper imperdiet. Proin id augue non elit luctus volutpat vel ac magna. Duis vel pharetra nisl.",
-    link: "#"
+  project3: {
+    title: "my project",
+    link: "www.github.com",
+    description:
+      " nam  voluptatem aliquam! Iste obcaecati quidem fugit deleniti quia in nisi fuga error hic. Blanditiis beatae magni consequatur. Sint distinctio, corporis animi eveniet asperiores tempora. Deleniti impedit, eveniet sit optio modi, tenetur sint, maxime deserunt porro quod dolor animi quibusdam cum quaerat unde id. Numquam labore ut dolor assumenda possimus impedit, eligendi ipsa accusamus incidunt quaerat in officiis at neque animi ullam nihil atque reiciendis? Sint, eius soluta? Suscipit nam iure quas accusantium, soluta natus culpa incidunt explicabo non maxime quos. Ipsam, et eveniet.",
+    photo: "./assets/project.jpg",
   },
-  {
-    title: "Project 4",
-    image: "https://via.placeholder.com/300x200",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In eu ex quis elit semper imperdiet. Proin id augue non elit luctus volutpat vel ac magna. Duis vel pharetra nisl.",
-    link: "#"
+  project4: {
+    title: "my project",
+    link: "www.github.com",
+    description:
+      " nam  voluptatem aliquam! Iste obcaecati quidem fugit deleniti quia in nisi fuga error hic. Blanditiis beatae magni consequatur. Sint distinctio, corporis animi eveniet asperiores tempora. Deleniti impedit, eveniet sit optio modi, tenetur sint, maxime deserunt porro quod dolor animi quibusdam cum quaerat unde id. Numquam labore ut dolor assumenda possimus impedit, eligendi ipsa accusamus incidunt quaerat in officiis at neque animi ullam nihil atque reiciendis? Sint, eius soluta? Suscipit nam iure quas accusantium, soluta natus culpa incidunt explicabo non maxime quos. Ipsam, et eveniet.",
+    photo: "./assets/project.jpg",
   },
-  {
-    title: "Project 5",
-    image: "https://via.placeholder.com/300x200",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In eu ex quis elit semper imperdiet. Proin id augue non elit luctus volutpat vel ac magna. Duis vel pharetra nisl.",
-    link: "#"
+  project5: {
+    title: "my project",
+    link: "www.github.com",
+    description:
+      " nam  voluptatem aliquam! Iste obcaecati quidem fugit deleniti quia in nisi fuga error hic. Blanditiis beatae magni consequatur. Sint distinctio, corporis animi eveniet asperiores tempora. Deleniti impedit, eveniet sit optio modi, tenetur sint, maxime deserunt porro quod dolor animi quibusdam cum quaerat unde id. Numquam labore ut dolor assumenda possimus impedit, eligendi ipsa accusamus incidunt quaerat in officiis at neque animi ullam nihil atque reiciendis? Sint, eius soluta? Suscipit nam iure quas accusantium, soluta natus culpa incidunt explicabo non maxime quos. Ipsam, et eveniet.",
+    photo: "./assets/project.jpg",
   },
-  {
-    title: "Project 6",
-    image: "https://via.placeholder.com/300x200",
-    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In eu ex quis elit semper imperdiet. Proin id augue non elit luctus volutpat vel ac magna. Duis vel pharetra nisl.",
-    link: "#"
+  project6: {
+    title: "my project",
+    link: "www.github.com",
+    description:
+      " nam  voluptatem aliquam! Iste obcaecati quidem fugit deleniti quia in nisi fuga error hic. Blanditiis beatae magni consequatur. Sint distinctio, corporis animi eveniet asperiores tempora. Deleniti impedit, eveniet sit optio modi, tenetur sint, maxime deserunt porro quod dolor animi quibusdam cum quaerat unde id. Numquam labore ut dolor assumenda possimus impedit, eligendi ipsa accusamus incidunt quaerat in officiis at neque animi ullam nihil atque reiciendis? Sint, eius soluta? Suscipit nam iure quas accusantium, soluta natus culpa incidunt explicabo non maxime quos. Ipsam, et eveniet.",
+    photo: "./assets/project.jpg",
+  },
+  project7: {
+    title: "my project",
+    link: "www.github.com",
+    description:
+      " nam  voluptatem aliquam! Iste obcaecati quidem fugit deleniti quia in nisi fuga error hic. Blanditiis beatae magni consequatur. Sint distinctio, corporis animi eveniet asperiores tempora. Deleniti impedit, eveniet sit optio modi, tenetur sint, maxime deserunt porro quod dolor animi quibusdam cum quaerat unde id. Numquam labore ut dolor assumenda possimus impedit, eligendi ipsa accusamus incidunt quaerat in officiis at neque animi ullam nihil atque reiciendis? Sint, eius soluta? Suscipit nam iure quas accusantium, soluta natus culpa incidunt explicabo non maxime quos. Ipsam, et eveniet.",
+    photo: "./assets/project.jpg",
+  },
+  project8: {
+    title: "my project",
+    link: "www.github.com",
+    description:
+      " nam  voluptatem aliquam! Iste obcaecati quidem fugit deleniti quia in nisi fuga error hic. Blanditiis beatae magni consequatur. Sint distinctio, corporis animi eveniet asperiores tempora. Deleniti impedit, eveniet sit optio modi, tenetur sint, maxime deserunt porro quod dolor animi quibusdam cum quaerat unde id. Numquam labore ut dolor assumenda possimus impedit, eligendi ipsa accusamus incidunt quaerat in officiis at neque animi ullam nihil atque reiciendis? Sint, eius soluta? Suscipit nam iure quas accusantium, soluta natus culpa incidunt explicabo non maxime quos. Ipsam, et eveniet.",
+    photo: "./assets/project.jpg",
+  },
+};
+function checkScroll() {
+  /*
+   ** Find the direction of scroll
+   ** 0 - initial, 1 - up, 2 - down
+   */
+
+  curScroll = w.scrollY || doc.scrollTop;
+  if (curScroll > prevScroll) {
+    //scrolled up
+    direction = 2;
+  } else if (curScroll < prevScroll) {
+    //scrolled down
+    direction = 1;
   }
-];
 
-const projectContainer = document.getElementById(".projects");
+  if (direction !== prevDirection) {
+    toggleHeader(direction, curScroll);
+  }
 
-projects.forEach((project) => {
-  const card = document.createElement("div");
-  card.classList.add("project-card");
+  prevScroll = curScroll;
+}
 
-  const image = document.createElement("div");
-  image.classList.add("project-image");
-  image.style.backgroundImage = `url('${project.image}')`;
+var toggleHeader = function (direction, curScroll) {
+  if (direction === 2 && curScroll > 52) {
+    //replace 52 with the height of your header in px
 
-  const details = document.createElement("div");
-  details.classList.add("project-details");
+    header.classList.add("hide");
+    prevDirection = direction;
+  } else if (direction === 1) {
+    header.classList.remove("hide");
+    prevDirection = direction;
+  }
+};
 
-  const title = document.createElement("h3");
-  title.textContent = project.title;
+function projectWin() {
+  for (let project of projects) {
+    project.addEventListener("click", function (e) {
+      let newDiv = document.createElement("div");
+      let newH1 = document.createElement("h1");
+      let newP = document.createElement("p");
+      let newImg = document.createElement("img");
+      let callToAction = document.createElement("a");
+      let projectId = project.id;
+      let exitMenu = document.createElement("img");
+      exitMenu.setAttribute("src", "./assets/x-symbol-svgrepo-com.svg");
+      exitMenu.classList.add("exitIcon");
+      console.log(project.id);
+      console.log(projectsList[projectId]);
+      newH1.textContent = projectsList[projectId].title;
+      newP.textContent = projectsList[projectId].description;
+      callToAction.textContent = ` click here to see the project on github`;
+      callToAction.setAttribute("href", projectsList[projectId].link);
+      newImg.setAttribute("src", projectsList[projectId].photo);
+      newDiv.appendChild(newH1);
+      newDiv.appendChild(newImg);
+      newDiv.appendChild(newP);
+      newDiv.appendChild(callToAction);
+      newDiv.appendChild(exitMenu);
+      newDiv.classList.add("window");
+      document.body.appendChild(newDiv);
+      main.style.cursor = "pointer";
 
-  const description = document.createElement("p");
-  description.textContent = project.description;
+      exitMenu.addEventListener("click", () => {
+        document.body.removeChild(newDiv);
+      });
+      e.stopPropagation();
+      main.addEventListener("click", (e) => {
+        console.log(e.currentTarget);
+        document.body.removeChild(newDiv);
+        main.style.cursor = "none";
+        e.stopPropagation();
+      });
+      console.log(e.target);
+    });
+  }
+}
 
-  const link = document.createElement("a");
-  link.href = project.link;
-  link.textContent = "View Project";
-  link.classList.add("project-button");
-
-  details.appendChild(title);
-  details.appendChild(description);
-  details.appendChild(link);
-
-  card.appendChild(image);
-  card.appendChild(details);
-
-  projectContainer.appendChild(card);
-});
+checkScroll();
+projectWin();

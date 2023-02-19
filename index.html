@@ -1,115 +1,167 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Web Developer Portfolio</title>
-    <link rel="stylesheet" href="style.css">
-  </head>
-  <body>
-    <header>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>My Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script defer src="script.js"></script>
+  <script src="https://kit.fontawesome.com/9d1def913c.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+      <h1>Dionysios Tsouchlakis</h1>
+    <div class="container nav">
       <nav>
         <ul>
-          <li><a href="#about-me">About Me</a></li>
+          <li><a href="#about">About</a></li>
           <li><a href="#skills">Skills</a></li>
-          <li><a href="#contact-me">Contact Me</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
         </ul>
       </nav>
-    </header>
+    </div>
+  </header>
 
-    <section id="about-me">
+  <!-- Main content -->
+  <main>
+    <section class="about">
       <div class="container">
-        <h2>About Me</h2>
-        <div class="card">
-          <img src="https://via.placeholder.com/500x250" alt="Profile Picture">
-          <div class="card-body">
-            <h3>Jane Doe</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in convallis tellus. Vivamus ullamcorper quam non mi bibendum, eu convallis velit accumsan. Ut pellentesque vel augue eget feugiat. Nulla facilisi.</p>
-            <a href="#">View Resume</a>
-          </div>
-        </div>
+        <h1 class="profile" src="" alt="Profile Picture">About me</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ac velit eleifend, fermentum enim nec, finibus nisl. Sed ultricies lectus libero, a lacinia velit sollicitudin vel. Fusce suscipit sapien vitae metus interdum, et posuere sapien malesuada. Nullam aliquam, odio eget tristique sagittis, velit magna convallis lectus, vel fringilla ipsum ex vitae sapien. Duis bibendum, arcu vel posuere viverra, arcu est faucibus elit, et pretium elit sapien sed tortor.</p>
       </div>
     </section>
 
-    <section id="skills">
-      <div class="container">
-        <h2>Skills</h2>
-        <div class="skill-bars">
-          <ul>
-            <li>
-              <span class="skill-name">HTML</span>
-              <div class="skill-bar">
-                <div class="skill-bar-fill" style="width: 90%"></div>
-              </div>
-            </li>
-            <li>
-              <span class="skill-name">CSS</span>
-              <div class="skill-bar">
-                <div class="skill-bar-fill" style="width: 80%"></div>
-              </div>
-            </li>
-            <li>
-              <span class="skill-name">JavaScript</span>
-              <div class="skill-bar">
-                <div class="skill-bar-fill" style="width: 70%"></div>
-              </div>
-            </li>
-          </ul>
-        </div>
-      </div>
     </section>
     <section id="projects" class="projects">
-      <h2>My Projects</h2>
-      <div class="project-cards">
-        <div class="project-card">
-          <div class="project-image" style="background-image: url('https://via.placeholder.com/300x200')"></div>
-          <div class="project-details">
-            <h3>Project 1</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In eu ex quis elit semper imperdiet. Proin id augue non elit luctus volutpat vel ac magna. Duis vel pharetra nisl.</p>
-            <a href="#" class="project-button">View Project</a>
-          </div>
-        </div>
-        <div class="project-card">
-          <div class="project-image" style="background-image: url('https://via.placeholder.com/300x200')"></div>
-          <div class="project-details">
-            <h3>Project 2</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In eu ex quis elit semper imperdiet. Proin id augue non elit luctus volutpat vel ac magna. Duis vel pharetra nisl.</p>
-            <a href="#" class="project-button">View Project</a>
-          </div>
-        </div>
-        <div class="project-card">
-          <div class="project-image" style="background-image: url('https://via.placeholder.com/300x200')"></div>
-          <div class="project-details">
-            <h3>Project 3</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In eu ex quis elit semper imperdiet. Proin id augue non elit luctus volutpat vel ac magna. Duis vel pharetra nisl.</p>
-            <a href="#" class="project-button">View Project</a>
-          </div>
-        </div>
-      </div>
-    </section>
-    
-    <section id="contact-me">
       <div class="container">
-        <h2>Contact Me</h2>
-        <form class="contact-form">
-          <label for="name">Name</label>
-          <input type="text" id="name" name="name" required>
-
-          <label for="email">Email</label>
-          <input type="email" id="email" name="email" required>
-
-          <label for="message">Message</label>
-          <textarea id="message" name="message" rows="5" required></textarea>
-
-          <button type="submit">Send</button>
-          <div class="form-status"></div>
-        </form>
+        <h2>Projects</h2>
+        <div class="project" id="project1">
+          <img src="./assets/project.jpg" alt="Project 1">
+          <div>
+              <h3>Card flip</h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam convallis sapien vitae neque posuere ultricies.</p>
+          </div>
+        </div>
+        <div class="project"  id="project2">
+          <img src="./assets/project.jpg" alt="Project 1">
+          <div>
+              <h3>Place the box game</h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam convallis sapien vitae neque posuere ultricies.</p>
+          </div>
+        </div>
+        <div class="project"  id="project3">
+          <img src="./assets/project.jpg" alt="Project 1">
+          <div>
+              <h3>Saint Pauls webpage</h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam convallis sapien vitae neque posuere ultricies.</p>
+          </div>
+        </div>
+        <div class="project"  id="project4">
+          <img src="./assets/project.jpg" alt="Project 1">
+          <div>
+              <h3>Tesla clone</h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam convallis sapien vitae neque posuere ultricies.</p>
+          </div>
+        </div>
+        <div class="project"  id="project5">
+          <img src="./assets/project.jpg" alt="Project 1">
+          <div>
+              <h3>Weathe App</h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam convallis sapien vitae neque posuere ultricies.</p>
+          </div>
+        </div>
+        <div class="project"  id="project6">
+          <img src="./assets/project.jpg" alt="Project 1">
+          <div>
+              <h3>Tic Tac Toe</h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam convallis sapien vitae neque posuere ultricies.</p>
+          </div>
+        </div>
+        <div class="project"  id="project7">
+          <img src="./assets/project.jpg" alt="Project 1">
+          <div>
+              <h3>Nespresso Clone</h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam convallis sapien vitae neque posuere ultricies.</p>
+          </div>
+        </div>
+        <div class="project"  id="project8">
+          <img src="../assets/project.jpg" alt="Project 2">
+          <div>
+              <h3>Card Flip Game</h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam convallis sapien vitae neque posuere ultricies.</p>
+          </div>
+        </div>
       </div>
     </section>
+    <section id="experience" class="experience">
+        <div class="container">
+            <h2>Experience</h2>
+            <div class="job">
+                <h3>Bootcamp</h3>
+                <p>ABC Company | Jan 2020 - Present</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam convallis
+                </div>
+            <div class="job">
+                <h3>Business development and reasearch analyst</h3>
+                <p>Aurora Energy Research | Berlin, Germany | Jan 2020 - Present</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam convallis
+                </div>
+            <div class="job">
+                <h3>Web Developer</h3>
+                <p>ABC Company | Jan 2020 - Present</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam convallis
+                </div>
+            <div class="job">
+                <h3>Web Developer</h3>
+                <p>ABC Company | Jan 2020 - Present</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam convallis
+                </div>
+            </section>
+            <section id="skills" class="skills">
+              <div class="container">
+                <h2>Skills</h2>
+                <ul>
+                  <li>HTML</li>
+                  <li>CSS</li>
+                  <li>JavaScript</li>
+                  <li>PHP</li>
+                  <li>MySQL</li>
+                  <li>Python</li>
+                  <li>Power Query</li>
+                  <li>Git</li>
+                </ul>
+              </div>
+            </section>
 
-    <footer>
-      <p>&copy; 2023 Jane Doe</p>
-    </footer>
+<section id="contact" class="contact">
+  <div class="container">
+    <h2>Contact</h2>
+    <form action="submit-form.php" method="post">
+      <label for="name">Name</label>
+      <input type="text" id="name" name="name" required>
 
-    <script src="script.js"></script>
-  </body>
-</html>
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="message">Message</label>
+      <textarea id="message" name="message" required></textarea>
+
+      <button type="submit" class="btn btn-primary">Send</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <p>&copy; 2023 Dionysios Tsouchlakis. All rights reserved.</p>
+<div>
+    <ul>
+    <li><a href="github.com"><i class="fa-brands fa-github"></i></a></li>
+    <li><a href="linkedin.com"><i class="fa-brands fa-linkedin-in"></i></a></li>
+</ul>
+</div>
+</div>
+</footer>
