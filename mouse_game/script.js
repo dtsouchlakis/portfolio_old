@@ -1,15 +1,5 @@
-//Steps//
-//add event listener on box on mousedown//
-//add event listener on document for mouseup + mousemove//
-//on mousedown change cursor, take coordinates of mouse from mousemove listener
-//and put them into the css of the box
-// on mouseup stop changing box location and change cursor back
-
 const boxes = document.querySelectorAll(".box");
-//110 is the
 const target = document.querySelector(".target");
-const w = window.innerWidth - target.offsetWidth;
-const h = window.innerHeight - target.offsetHeight;
 const timerElem = document.querySelector(".timer");
 const num = document.querySelector("#num");
 const roll = document.querySelector(".roll");
@@ -19,20 +9,29 @@ const bestScoreDiv = document.querySelector("#bestScore");
 const bestContainerDiv = document.querySelector(".bestContainer");
 let bestScore = 0;
 
+//window size
+const w = window.innerWidth - target.offsetWidth;
+const h = window.innerHeight - target.offsetHeight;
+
+//random integer
 function getRandomInt(min, max) {
   min = Math.ceil(min);
   max = Math.floor(max);
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
+
+//random position
 function randomPosition(elem) {
-  //   console.log("getting random position");
-  //   console.log("max", h);
   elem.style.top = getRandomInt(0, h) + "px";
   elem.style.left = getRandomInt(0, w) + "px";
 }
+
+//random winner
 function randomWinner() {
   return getRandomInt(1, 5);
 }
+
+//box game function
 function boxGame() {
   console.log("bestscore", bestScore);
   let t2 = 0;
@@ -71,12 +70,9 @@ function boxGame() {
     });
 
     box.addEventListener("mouseup", function (e) {
-      //     console.log(e.type);
       mouse = e.type;
 
       if (
-        // box.offsetLeft > target.offsetLeft &&
-        // box.offsetLeft + box.offsetWidth <
         parseInt(box.style.left) > parseInt(target.style.left) &&
         parseInt(box.style.left) + 100 < parseInt(target.style.left) + 110 &&
         parseInt(box.style.top) > parseInt(target.style.top) &&
