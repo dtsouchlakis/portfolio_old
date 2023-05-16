@@ -1,0 +1,288 @@
+body {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background-image: url("https://images.unsplash.com/photo-1519681393784-d120267933ba?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1124&q=100");
+  background-position: center;
+  background-size: cover;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* justify-content: center; */
+  height: 100%;
+  width: 50%;
+  margin: auto;
+  position: relative;
+}
+.buttons {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+.board {
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  background-color: rgba(255, 255, 255, 0.75);
+  border-radius: 12px;
+  border: 1px solid rgba(209, 213, 219, 0.3);
+  width: 100%;
+  margin: 20px;
+  min-width: 300px;
+  min-height: 100px;
+}
+.task {
+  padding: 20px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.taskInfo p {
+  margin: 5px;
+}
+.empty.task {
+  display: flex;
+  justify-content: center;
+}
+.taskInfo {
+  flex: 2;
+}
+.buttons option,
+.buttons button {
+  box-shadow: rgba(18, 21, 26, 0.075) 0px 1px 1px 0px;
+  border-radius: 6px;
+  height: 32px;
+}
+.buttons button {
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 1.1rem;
+  font-weight: 500;
+  height: auto;
+  overflow: hidden;
+  padding: 0.8rem 1rem;
+  text-decoration: none;
+  text-transform: capitalize;
+
+  background-color: #2ea44f;
+  border: none;
+}
+.buttons button:hover {
+  background-color: #289045;
+}
+.buttons select {
+  background-color: #aeaebb;
+  border: none;
+  color: #585858;
+  cursor: pointer;
+  padding: 1rem;
+  width: 150px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 1.1rem;
+  font-weight: 500;
+  height: auto;
+  overflow: hidden;
+  padding: 0.8rem 1rem;
+  text-decoration: none;
+  text-transform: capitalize;
+}
+h1 {
+  color: white;
+}
+
+.popupWindow {
+  position: absolute;
+  height: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  background-color: rgba(255, 255, 255, 0.75);
+  border-radius: 12px;
+  border: 1px solid rgba(209, 213, 219, 0.3);
+  width: 70%;
+  margin: 20px;
+  min-width: 300px;
+  min-height: 100px;
+  top: 10%;
+}
+.popupWindow form {
+  flex: 2;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  width: 85%;
+}
+.popupWindow form div:first-child,
+.popupWindow form div:nth-child(2) {
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  width: 100%;
+}
+.popupWindow form input {
+  margin: 5px;
+  width: calc(100%-5px);
+  height: 34px;
+  padding-left: 5px;
+
+  border-radius: 6px;
+  border: 0.5px solid rgba(128, 128, 128, 0.4);
+}
+.popupWindow form select {
+  margin: 5px;
+  width: 100%;
+  padding-left: 5px;
+
+  height: 34px;
+  border-radius: 6px;
+  border: 0.5px solid rgba(128, 128, 128, 0.4);
+}
+input[type="text" i] {
+  padding: 0;
+}
+
+.popupWindow form button {
+  width: 30%;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  display: inline-block;
+  font-weight: 500;
+  height: auto;
+  overflow: hidden;
+  padding: 0.8rem 1rem;
+  text-decoration: none;
+  margin: 22px 12px 12px 0;
+}
+.popUpBtns {
+  display: flex;
+}
+.popupWindow form input,
+.popupWindow form select,
+label {
+  margin: 12px 0 0 0;
+}
+#cancelNewTask {
+  background-color: #cccdde;
+  color: #646681;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+#submitNewTask {
+  background-color: #2ea44f;
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+.backdropBlur {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0px;
+  /* left: 0; */
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+}
+.taskTime {
+  color: #4b5663;
+  font-size: 0.8rem;
+}
+.container {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+}
+
+/* On mouse-over, add a grey background color */
+.container:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+.container input:checked ~ .checkmark {
+  background-color: #7a8085;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.container .checkmark:after {
+  left: 9px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+.isComplete {
+  height: 50px;
+}
+.fa-solid {
+  background-color: #eee;
+  padding: 5px;
+  margin: 5px;
+  color: #585858;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.fa-solid:hover {
+  background-color: #ccc;
+}
