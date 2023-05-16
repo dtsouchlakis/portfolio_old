@@ -1,0 +1,757 @@
+const canvas = document.querySelector("canvas");
+const c = canvas.getContext("2d");
+const scoreEl = document.getElementById("scoreEl");
+const reset = document.getElementById("reset");
+reset.addEventListener("click", () => {
+  location.reload();
+});
+canvas.width = innerWidth;
+canvas.height = innerHeight;
+class Boundary {
+  static width = 40;
+  static height = 40;
+  constructor({ position, image }) {
+    this.position = position;
+    this.width = 40;
+    this.height = 40;
+    this.image = image;
+    this.angle = 0;
+  }
+  draw() {
+    // c.fillStyle = "blue";
+    // c.fillRect(this.position.x, this.position.y, this.width, this.height);
+    c.drawImage(this.image, this.position.x, this.position.y);
+  }
+}
+class Player {
+  constructor({ position, velocity }) {
+    this.position = position;
+    this.velocity = velocity;
+    this.radius = 15;
+    this.mouthOpen = true;
+    this.angle = 0;
+    this.super = false;
+  }
+
+  draw() {
+    const startAngle =
+      Math.PI * (this.mouthOpen ? 0.3 - this.angle : 0.1 - this.angle);
+    const endAngle =
+      Math.PI * (this.mouthOpen ? 1.7 - this.angle : 1.9 - this.angle);
+
+    c.beginPath();
+    c.arc(this.position.x, this.position.y, this.radius, startAngle, endAngle);
+    c.lineTo(this.position.x, this.position.y);
+    c.closePath();
+    c.fillStyle = "yellow";
+    c.fill();
+  }
+  update() {
+    this.draw();
+    this.position.x += this.velocity.x;
+    this.position.y += this.velocity.y;
+  }
+}
+class Ghost {
+  static speed = 2;
+  constructor({ position, velocity, color = "red" }) {
+    this.position = position;
+    this.velocity = velocity;
+    this.radius = 20;
+    this.color = color;
+    this.prevCollisions = [];
+    this.speed = 2;
+    this.left = false;
+    this.ghostImg = "./img/ghostLeft.png";
+    this.running = false;
+  }
+
+  draw() {
+    if (this.left) {
+      if (this.running) {
+        this.ghostImg = "./img/ghostLeftScared.png";
+      } else {
+        this.ghostImg = "./img/ghostLeft.png";
+      }
+    } else {
+      if (this.running) {
+        this.ghostImg = "./img/ghostRightScared.png";
+      } else {
+        this.ghostImg = "./img/ghostRight.png";
+      }
+    }
+
+    c.drawImage(
+      createImage(this.ghostImg),
+      this.position.x - 20,
+      this.position.y - 20
+    );
+    // c.beginPath();
+    // c.arc(this.position.x, this.position.y, this.radius, 0, Math.PI * 2);
+    // c.fillStyle = this.color;
+    // c.fill();
+    // c.closePath();
+  }
+  update() {
+    this.draw();
+    this.position.x += this.velocity.x;
+    this.position.y += this.velocity.y;
+  }
+}
+const keys = {
+  w: {
+    pressed: false,
+  },
+  s: {
+    pressed: false,
+  },
+  a: {
+    pressed: false,
+  },
+  d: {
+    pressed: false,
+  },
+};
+class Pellet {
+  constructor({ position }) {
+    this.radius = 3;
+    this.position = position;
+  }
+
+  draw() {
+    c.beginPath();
+    c.arc(this.position.x, this.position.y, this.radius, 0, Math.PI * 2);
+    c.fillStyle = "white";
+    c.fill();
+    c.closePath();
+  }
+}
+class BigPellet {
+  constructor({ position }) {
+    this.radius = 9;
+    this.position = position;
+  }
+
+  draw() {
+    c.beginPath();
+    c.arc(this.position.x, this.position.y, this.radius, 0, Math.PI * 2);
+    c.fillStyle = "white";
+    c.fill();
+    c.closePath();
+  }
+}
+const pellets = [];
+let score = 0;
+let lastKey = "";
+const map = [
+  ["1", "-", "-", "-", "-", "-", "-", "-", "-", "-", "2"],
+  ["|", "O", ".", ".", ".", ".", ".", ".", ".", "O", "|"],
+  ["|", ".", "b", ".", "[", "7", "]", ".", "b", ".", "|"],
+  ["|", ".", ".", ".", ".", "_", ".", ".", ".", ".", "|"],
+  ["|", ".", "[", "]", ".", ".", ".", "[", "]", ".", "|"],
+  ["|", ".", ".", ".", "O", "^", "O", ".", ".", ".", "|"],
+  ["|", ".", "b", ".", "[", "+", "]", ".", "b", ".", "|"],
+  ["|", ".", ".", ".", "O", "_", "O", ".", ".", ".", "|"],
+  ["|", ".", "[", "]", ".", ".", ".", "[", "]", ".", "|"],
+  ["|", ".", ".", ".", ".", "^", ".", ".", ".", ".", "|"],
+  ["|", ".", "b", ".", "[", "5", "]", ".", "b", ".", "|"],
+  ["|", "O", ".", ".", ".", ".", ".", ".", ".", "O", "|"],
+  ["4", "-", "-", "-", "-", "-", "-", "-", "-", "-", "3"],
+];
+
+function createImage(src) {
+  const image = new Image();
+  image.src = src;
+  return image;
+}
+const boundaries = [];
+const ghosts = [
+  new Ghost({
+    position: {
+      x: Boundary.width * 6 + Boundary.width / 2,
+      y: Boundary.height + Boundary.height / 2,
+    },
+    velocity: {
+      x: Ghost.speed,
+      y: 0,
+    },
+  }),
+  new Ghost({
+    position: {
+      x: Boundary.width * 6 + Boundary.width / 2,
+      y: Boundary.height + Boundary.height / 2,
+    },
+    velocity: {
+      x: Ghost.speed,
+      y: 0,
+    },
+    color: "blue",
+  }),
+  new Ghost({
+    position: {
+      x: Boundary.width * 6 + Boundary.width / 2,
+      y: Boundary.height * 3 + Boundary.height / 2,
+    },
+    velocity: {
+      x: Ghost.speed,
+      y: 0,
+    },
+    color: "pink",
+  }),
+];
+const player = new Player({
+  position: {
+    x: Boundary.width + Boundary.width / 2,
+    y: Boundary.height + Boundary.height / 2,
+  },
+  velocity: {
+    x: 0,
+    y: 0,
+  },
+});
+map.forEach((row, i) => {
+  row.forEach((symbol, j) => {
+    switch (symbol) {
+      case "-":
+        boundaries.push(
+          new Boundary({
+            position: {
+              x: Boundary.width * j,
+              y: Boundary.height * i,
+            },
+            image: createImage("./img/pipeHorizontal.png"),
+          })
+        );
+        break;
+      case "|":
+        boundaries.push(
+          new Boundary({
+            position: {
+              x: Boundary.width * j,
+              y: Boundary.height * i,
+            },
+            image: createImage("./img/pipeVertical.png"),
+          })
+        );
+        break;
+      case "1":
+        boundaries.push(
+          new Boundary({
+            position: {
+              x: Boundary.width * j,
+              y: Boundary.height * i,
+            },
+            image: createImage("./img/pipeCorner1.png"),
+          })
+        );
+        break;
+      case "2":
+        boundaries.push(
+          new Boundary({
+            position: {
+              x: Boundary.width * j,
+              y: Boundary.height * i,
+            },
+            image: createImage("./img/pipeCorner2.png"),
+          })
+        );
+        break;
+      case "3":
+        boundaries.push(
+          new Boundary({
+            position: {
+              x: Boundary.width * j,
+              y: Boundary.height * i,
+            },
+            image: createImage("./img/pipeCorner3.png"),
+          })
+        );
+        break;
+      case "4":
+        boundaries.push(
+          new Boundary({
+            position: {
+              x: Boundary.width * j,
+              y: Boundary.height * i,
+            },
+            image: createImage("./img/pipeCorner4.png"),
+          })
+        );
+        break;
+      case "b":
+        boundaries.push(
+          new Boundary({
+            position: {
+              x: Boundary.width * j,
+              y: Boundary.height * i,
+            },
+            image: createImage("./img/block.png"),
+          })
+        );
+        break;
+      case "[":
+        boundaries.push(
+          new Boundary({
+            position: {
+              x: j * Boundary.width,
+              y: i * Boundary.height,
+            },
+            image: createImage("./img/capLeft.png"),
+          })
+        );
+        break;
+      case "]":
+        boundaries.push(
+          new Boundary({
+            position: {
+              x: j * Boundary.width,
+              y: i * Boundary.height,
+            },
+            image: createImage("./img/capRight.png"),
+          })
+        );
+        break;
+      case "_":
+        boundaries.push(
+          new Boundary({
+            position: {
+              x: j * Boundary.width,
+              y: i * Boundary.height,
+            },
+            image: createImage("./img/capBottom.png"),
+          })
+        );
+        break;
+      case "^":
+        boundaries.push(
+          new Boundary({
+            position: {
+              x: j * Boundary.width,
+              y: i * Boundary.height,
+            },
+            image: createImage("./img/capTop.png"),
+          })
+        );
+        break;
+      case "+":
+        boundaries.push(
+          new Boundary({
+            position: {
+              x: j * Boundary.width,
+              y: i * Boundary.height,
+            },
+            image: createImage("./img/pipeCross.png"),
+          })
+        );
+        break;
+      case "5":
+        boundaries.push(
+          new Boundary({
+            position: {
+              x: j * Boundary.width,
+              y: i * Boundary.height,
+            },
+            color: "blue",
+            image: createImage("./img/pipeConnectorTop.png"),
+          })
+        );
+        break;
+      case "6":
+        boundaries.push(
+          new Boundary({
+            position: {
+              x: j * Boundary.width,
+              y: i * Boundary.height,
+            },
+            color: "blue",
+            image: createImage("./img/pipeConnectorRight.png"),
+          })
+        );
+        break;
+      case "7":
+        boundaries.push(
+          new Boundary({
+            position: {
+              x: j * Boundary.width,
+              y: i * Boundary.height,
+            },
+            color: "blue",
+            image: createImage("./img/pipeConnectorBottom.png"),
+          })
+        );
+        break;
+      case "8":
+        boundaries.push(
+          new Boundary({
+            position: {
+              x: j * Boundary.width,
+              y: i * Boundary.height,
+            },
+            image: createImage("./img/pipeConnectorLeft.png"),
+          })
+        );
+        break;
+      case ".":
+        pellets.push(
+          new Pellet({
+            position: {
+              x: j * Boundary.width + Boundary.width / 2,
+              y: i * Boundary.height + Boundary.height / 2,
+            },
+          })
+        );
+        break;
+      case "O":
+        pellets.push(
+          new BigPellet({
+            position: {
+              x: j * Boundary.width + Boundary.width / 2,
+              y: i * Boundary.height + Boundary.height / 2,
+            },
+          })
+        );
+    }
+  });
+});
+function circleCollidesWithRectangle({ circle, rectangle }) {
+  const padding = Boundary.width / 2 - circle.radius - 1;
+  return (
+    circle.position.y - circle.radius + circle.velocity.y <=
+      rectangle.position.y + rectangle.height + padding &&
+    circle.position.x + circle.radius + circle.velocity.x >=
+      rectangle.position.x - padding &&
+    circle.position.y + circle.radius + circle.velocity.y >=
+      rectangle.position.y - padding &&
+    circle.position.x - circle.radius + circle.velocity.x <=
+      rectangle.position.x + rectangle.width + padding
+  );
+}
+function victory() {
+  c.font = "60px Arial";
+  c.fillStyle = "red";
+  c.fillText("You win", canvas.width / 13, canvas.height / 3);
+}
+function defeat() {
+  c.font = "60px Arial";
+  c.fillStyle = "red";
+  c.fillText("You lose", canvas.width / 13, canvas.height / 3);
+}
+let animationId;
+let frameCount = 0;
+let ghostFrame = 0;
+function animateMouth() {
+  if (player.velocity.x != 0 || player.velocity.y != 0);
+  {
+    frameCount++;
+    if (frameCount == 25) {
+      player.mouthOpen = !player.mouthOpen;
+      frameCount = 0;
+    }
+  }
+}
+function animateGhost(ghost) {
+  ghostFrame++;
+  if (ghostFrame == 85) {
+    ghost.left = !ghost.left;
+    ghostFrame = 0;
+  }
+}
+function animate() {
+  animationId = requestAnimationFrame(animate);
+  c.clearRect(0, 0, canvas.width, canvas.height);
+
+  animateMouth();
+  if (keys.w.pressed && lastKey == "w") {
+    player.angle = 0.5;
+    for (let i = 0; i < boundaries.length; i++) {
+      const boundary = boundaries[i];
+      if (
+        circleCollidesWithRectangle({
+          circle: {
+            ...player,
+            velocity: {
+              x: 0,
+              y: -5,
+            },
+          },
+          rectangle: boundary,
+        })
+      ) {
+        player.velocity.y = 0;
+        break;
+      } else {
+        player.velocity.y = -5;
+      }
+    }
+  } else if (keys.s.pressed && lastKey == "s") {
+    player.angle = -0.5;
+    for (let i = 0; i < boundaries.length; i++) {
+      const boundary = boundaries[i];
+      if (
+        circleCollidesWithRectangle({
+          circle: {
+            ...player,
+            velocity: {
+              x: 0,
+              y: 5,
+            },
+          },
+          rectangle: boundary,
+        })
+      ) {
+        player.velocity.y = 0;
+        break;
+      } else {
+        player.velocity.y = 5;
+      }
+    }
+  } else if (keys.a.pressed && lastKey == "a") {
+    player.angle = -1;
+    for (let i = 0; i < boundaries.length; i++) {
+      const boundary = boundaries[i];
+      if (
+        circleCollidesWithRectangle({
+          circle: {
+            ...player,
+            velocity: {
+              x: -5,
+              y: 0,
+            },
+          },
+          rectangle: boundary,
+        })
+      ) {
+        player.velocity.x = 0;
+        break;
+      } else {
+        player.velocity.x = -5;
+      }
+    }
+  } else if (keys.d.pressed && lastKey == "d") {
+    player.angle = 0;
+    for (let i = 0; i < boundaries.length; i++) {
+      const boundary = boundaries[i];
+      if (
+        circleCollidesWithRectangle({
+          circle: {
+            ...player,
+            velocity: {
+              x: 5,
+              y: 0,
+            },
+          },
+          rectangle: boundary,
+        })
+      ) {
+        player.velocity.x = 0;
+        break;
+      } else {
+        player.velocity.x = 5;
+      }
+    }
+  }
+
+  for (let i = pellets.length - 1; 0 < i; i--) {
+    const pellet = pellets[i];
+
+    pellet.draw();
+    if (
+      Math.hypot(
+        pellet.position.x - player.position.x,
+        pellet.position.y - player.position.y
+      ) <
+      pellet.radius + player.radius
+    ) {
+      pellets.splice(i, 1);
+      if (pellet.constructor.name == "BigPellet") {
+        score += 100;
+        scoreEl.innerHTML = score;
+        ghosts.forEach((ghost) => {
+          ghost.running = true;
+          setTimeout(() => {
+            ghost.running = false;
+          }, 5000);
+        });
+      } else {
+        score += 10;
+        scoreEl.innerHTML = score;
+      }
+    }
+  }
+  boundaries.forEach((boundary) => {
+    boundary.draw();
+    if (
+      circleCollidesWithRectangle({
+        circle: player,
+        rectangle: boundary,
+      })
+    ) {
+      player.velocity.x = 0;
+      player.velocity.y = 0;
+    }
+  });
+  player.update();
+  ghosts.forEach((ghost, i) => {
+    animateGhost(ghost);
+
+    ghost.update();
+    if (
+      Math.hypot(
+        ghost.position.x - player.position.x,
+        ghost.position.y - player.position.y
+      ) <
+      ghost.radius + player.radius
+    ) {
+      if (ghost.running) {
+        ghosts.splice(i, 1);
+        score += 200;
+        if (ghosts.length == 0) {
+          victory();
+          cancelAnimationFrame(animationId);
+        } else if (pellets.length == 0) {
+          defeat();
+          cancelAnimationFrame(animationId);
+        }
+      } else {
+        defeat();
+        cancelAnimationFrame(animationId);
+      }
+    }
+    const collisions = [];
+    boundaries.forEach((boundary) => {
+      if (
+        !collisions.includes("right") &&
+        circleCollidesWithRectangle({
+          circle: {
+            ...ghost,
+            velocity: {
+              x: ghost.speed,
+              y: 0,
+            },
+          },
+          rectangle: boundary,
+        })
+      ) {
+        collisions.push("right");
+      }
+      if (
+        !collisions.includes("left") &&
+        circleCollidesWithRectangle({
+          circle: {
+            ...ghost,
+            velocity: {
+              x: -ghost.speed,
+              y: 0,
+            },
+          },
+          rectangle: boundary,
+        })
+      ) {
+        collisions.push("left");
+      }
+      if (
+        !collisions.includes("up") &&
+        circleCollidesWithRectangle({
+          circle: {
+            ...ghost,
+            velocity: {
+              x: 0,
+              y: -ghost.speed,
+            },
+          },
+          rectangle: boundary,
+        })
+      ) {
+        collisions.push("up");
+      }
+      if (
+        !collisions.includes("down") &&
+        circleCollidesWithRectangle({
+          circle: {
+            ...ghost,
+            velocity: {
+              x: 0,
+              y: ghost.speed,
+            },
+          },
+          rectangle: boundary,
+        })
+      ) {
+        collisions.push("down");
+      }
+    });
+    if (collisions.length > ghost.prevCollisions.length)
+      ghost.prevCollisions = collisions;
+
+    if (JSON.stringify(collisions) !== JSON.stringify(ghost.prevCollisions)) {
+      if (ghost.velocity.x > 0) ghost.prevCollisions.push("right");
+      else if (ghost.velocity.x < 0) ghost.prevCollisions.push("left");
+      else if (ghost.velocity.y < 0) ghost.prevCollisions.push("up");
+      else if (ghost.velocity.y > 0) ghost.prevCollisions.push("down");
+      const pathways = ghost.prevCollisions.filter((collision) => {
+        return !collisions.includes(collision);
+      });
+      const direction = pathways[Math.floor(Math.random() * pathways.length)];
+      switch (direction) {
+        case "down":
+          ghost.velocity.y = ghost.speed;
+          ghost.velocity.x = 0;
+          break;
+        case "up":
+          ghost.velocity.y = -ghost.speed;
+          ghost.velocity.x = 0;
+          break;
+        case "right":
+          ghost.velocity.y = 0;
+          ghost.velocity.x = ghost.speed;
+          break;
+        case "left":
+          ghost.velocity.y = 0;
+          ghost.velocity.x = -ghost.speed;
+          break;
+      }
+      ghost.prevCollisions = [];
+    }
+  });
+}
+
+animate();
+window.addEventListener("keydown", ({ key }) => {
+  switch (key) {
+    case "w":
+      lastKey = "w";
+      keys.w.pressed = true;
+      break;
+    case "a":
+      lastKey = "a";
+
+      keys.a.pressed = true;
+      break;
+    case "d":
+      keys.d.pressed = true;
+      lastKey = "d";
+
+      break;
+    case "s":
+      keys.s.pressed = true;
+      lastKey = "s";
+
+      break;
+  }
+});
+window.addEventListener("keyup", ({ key }) => {
+  switch (key) {
+    case "w":
+      keys.w.pressed = false;
+      break;
+    case "a":
+      keys.a.pressed = false;
+      break;
+    case "d":
+      keys.d.pressed = false;
+      break;
+    case "s":
+      keys.s.pressed = false;
+      break;
+  }
+});

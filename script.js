@@ -109,9 +109,10 @@ const projectsList = [
   },
   {
     id: 9,
-    title: "WIP - Pacman clone",
-    link: "#",
-    github: "#",
+    title: "Pacman clone",
+    link: "/Pacman/index.html",
+    github:
+      "https://github.com/dtsouchlakis/dtsouchlakis.github.io/tree/main/Pacman",
     description:
       "WIP. A clone of the game pacman. This is made using canvas and following an online tutorial for the main structure and the concepts, but then deviating and developing my own features as it develops. This project helped me learn a lot about classes and objects and how to use them effectively.",
     photo: "https://freepngimg.com/save/21577-pac-man-transparent/512x512",
