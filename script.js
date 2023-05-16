@@ -32,6 +32,8 @@ const projectsList = [
     id: 1,
     title: "Card flip",
     link: "/card%20flip/index.html",
+    github:
+      "https://github.com/dtsouchlakis/dtsouchlakis.github.io/tree/main/card%20flip",
     description:
       "A simple card flip game where the user can generate their selected amount of cards and then has to find the correct card with the least amount of tries possible. This project was built with HTML, CSS and JavaScript. It helped me to learn the basics of Javascript including the DOM and the event listeners.",
     photo: "https://cdn-icons-png.flaticon.com/512/827/827265.png",
@@ -40,6 +42,8 @@ const projectsList = [
     id: 2,
     title: "Place the box game",
     link: "/mouse_game/index.html",
+    github:
+      "https://github.com/dtsouchlakis/dtsouchlakis.github.io/tree/main/mouse_game",
     description:
       "A game where a random amount of boxes are placed in random locations on the screen. The user has to select the winning box as indicated on the screen and place it on the target as fast as possible. This project was built with HTML, CSS and JavaScript. The project helped me understand event listeners and the DOM even further, as well as understand how event listener events propagate.",
     photo: "https://cdn-icons-png.flaticon.com/512/685/685391.png",
@@ -48,6 +52,8 @@ const projectsList = [
     id: 3,
     title: "Saint Pauls webpage",
     link: "/St.%20Pauls%20project/index.html",
+    github:
+      "https://github.com/dtsouchlakis/dtsouchlakis.github.io/tree/main/St.%20Pauls%20project",
     description:
       "A static page of an international school in Seoul, using only css and html. This project was a challenge that helped me understand how to individually manage a larger project, including planning and time management, as well as implement my vision with CSS and HTML, without using Javascript, meaning I had to be creative in order to achieve my targets without it.",
     photo: "https://cdn-icons-png.flaticon.com/512/1080/1080985.png",
@@ -56,6 +62,8 @@ const projectsList = [
     id: 4,
     title: "Tesla clone",
     link: "/Tesla/index.html",
+    github:
+      "https://github.com/dtsouchlakis/dtsouchlakis.github.io/tree/main/Tesla",
     description:
       "A clone of the tesla website using only CSS and HTML. This project helped me understand even better the limitations of CSS but also allowed me to understand that CSS by itself is very versatile and can do a lot of things on its own.",
     photo: "https://cdn-icons-png.flaticon.com/512/1724/1724680.png",
@@ -64,6 +72,8 @@ const projectsList = [
     id: 5,
     title: "Weather App",
     link: "/weatherApp/index.html",
+    github:
+      "https://github.com/dtsouchlakis/dtsouchlakis.github.io/tree/main/weatherApp",
     description:
       "This project makes use of responsive design, AJAX calls in javascript, an autocomplete feature.",
     photo: "https://cdn-icons-png.flaticon.com/512/1163/1163661.png",
@@ -72,6 +82,8 @@ const projectsList = [
     id: 6,
     title: "Tic Tac Toe",
     link: "/ticktacktoe/index.html",
+    github:
+      "https://github.com/dtsouchlakis/dtsouchlakis.github.io/tree/main/ticktacktoe",
     description:
       "One of the first projects that I developed with Javascript. This project helped me implement a more complex logic and make a more modular use of functions in Javascript.",
     photo: "https://cdn-icons-png.flaticon.com/512/2162/2162800.png",
@@ -80,6 +92,8 @@ const projectsList = [
     id: 7,
     title: "Nespresso Clone",
     link: "/nespresso/index.html",
+    github:
+      "https://github.com/dtsouchlakis/dtsouchlakis.github.io/tree/main/nespresso",
     description:
       "This project is a clone of the nespresso website. It was coded using HTML and CSS and features a responsive design",
     photo: "https://cdn-icons-png.flaticon.com/512/1268/1268709.png",
@@ -87,7 +101,8 @@ const projectsList = [
   {
     id: 8,
     title: "Final Project - Waygookwin",
-    link: "https://github.com/dtsouchlakis/batch19-project",
+    link: "#",
+    github: "https://github.com/dtsouchlakis/batch19-project",
     description:
       "The final team project at the bootcamp, with a duration of 3 weeks. The project idea is a website which flips the idea of job searching on its head and allows companies to search for users instead. This project was built with HTML, CSS, JavaScript and PHP and is structured in an MVC architecture. The challenges of the project include team management, database management, and database design, as well as bugfixing in a limited time. The features I worked on include: Database management and design, Team management - worked as scrum master on the 3rd week, A messenging and chat feature, A talent search feature, including ranking the canditates depending on specific filters, and A notification feature for booked meetings.",
     photo: "https://cdn-icons-png.flaticon.com/512/3688/3688609.png",
@@ -96,6 +111,7 @@ const projectsList = [
     id: 9,
     title: "WIP - Pacman clone",
     link: "#",
+    github: "#",
     description:
       "WIP. A clone of the game pacman. This is made using canvas and following an online tutorial for the main structure and the concepts, but then deviating and developing my own features as it develops. This project helped me learn a lot about classes and objects and how to use them effectively.",
     photo: "https://freepngimg.com/save/21577-pac-man-transparent/512x512",
@@ -104,6 +120,7 @@ const projectsList = [
     id: 10,
     title: "WIP - BYOX",
     link: "#",
+    github: "#",
     description:
       "A finance app that allows users to split costs with other users and family members. This project is done in collaboration with other friend developers, using Django, PHP, Javascript, HTML and CSS",
     photo: "https://cdn-icons-png.flaticon.com/512/781/781831.png",
@@ -112,6 +129,8 @@ const projectsList = [
     id: 11,
     title: "TODO",
     link: "/Todo/build/index.html",
+    github:
+      "https://github.com/dtsouchlakis/dtsouchlakis.github.io/tree/main/Todo",
     description:
       "A simple todo app that uses local storage, made using react.js. It helped me learn the basics of react.js and apply them to further projects as well as React Native.",
     photo: "https://cdn-icons-png.flaticon.com/512/4472/4472515.png",
@@ -161,16 +180,20 @@ function createOverlay(newProject, index) {
   let newP = document.createElement("p");
   let newImg = document.createElement("img");
   let callToAction = document.createElement("a");
+  let liveProject = document.createElement("a");
   // let projectId = newProject.id;
   let exitMenu = document.createElement("img");
   exitMenu.setAttribute("src", "./assets/x-symbol-svgrepo-com.svg");
   exitMenu.classList.add("exitIcon");
   console.log(projectsList);
   console.log(index);
+  callToAction.classList.add("callToAction");
   newH1.textContent = projectsList[index].title;
   newP.textContent = projectsList[index].description;
-  callToAction.textContent = ` click here to see the project on github`;
-  callToAction.setAttribute("href", projectsList[index].link);
+  liveProject.textContent = `click here to preview the project`;
+  liveProject.setAttribute("href", projectsList[index].link);
+  callToAction.textContent = `click here to see the project on github`;
+  callToAction.setAttribute("href", projectsList[index].github);
   newImg.setAttribute("src", projectsList[index].photo);
   nextArrow.className = "fa-solid fa-angle-right";
   newDiv.appendChild(nextArrow);
@@ -180,6 +203,7 @@ function createOverlay(newProject, index) {
   newDiv.appendChild(newImg);
   newDiv.appendChild(newP);
   newDiv.appendChild(callToAction);
+  newDiv.appendChild(liveProject);
   newDiv.appendChild(exitMenu);
   newDiv.classList.add("window");
   document.body.appendChild(newDiv);

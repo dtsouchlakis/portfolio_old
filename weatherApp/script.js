@@ -75,7 +75,7 @@ function getWeatherData(city) {
   let xhr = new XMLHttpRequest();
   xhr.open(
     "GET",
-    `http://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=d1e1713a4ca7bc001d7edac58961f82a&units=metric`
+    `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=d1e1713a4ca7bc001d7edac58961f82a&units=metric`
   );
   xhr.addEventListener("readystatechange", function () {
     if (xhr.readyState == XMLHttpRequest.DONE) {

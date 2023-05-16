@@ -37,13 +37,16 @@ header {
   border-radius: 50%;
   margin-right: 10px;
 }
+
 .container.nav {
   margin: 0;
 }
+
 header h1 {
   margin-left: 20px;
   font-size: 1.9rem;
 }
+
 nav ul {
   display: flex;
   justify-content: flex-end;
@@ -69,8 +72,9 @@ nav ul li a:hover {
   margin: 0 auto;
   padding: 20px;
 }
-.profile {
-}
+
+.profile {}
+
 .about {
   height: 100vh;
   display: flex;
@@ -93,11 +97,13 @@ nav ul li a:hover {
   margin-bottom: 40px;
   width: 80%;
 }
+
 .about .container {
   display: flex;
   justify-content: space-between;
   text-align: justify;
 }
+
 .btn {
   display: inline-block;
   padding: 10px 20px;
@@ -157,6 +163,7 @@ nav ul li a:hover {
   max-width: 100%;
   /* margin-bottom: 20px; */
 }
+
 .projects .container {
   /* display: flex;
   flex-wrap: wrap;
@@ -164,12 +171,15 @@ nav ul li a:hover {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
 }
+
 .project div {
   display: none;
 }
+
 .job {
   margin: 22px;
 }
+
 .skills {
   background-color: white;
 }
@@ -187,6 +197,7 @@ nav ul li a:hover {
   justify-content: center;
   list-style: none;
 }
+
 .skills ul li {
   display: inline-block;
   margin: 7px;
@@ -197,6 +208,7 @@ nav ul li a:hover {
   cursor: default;
   font-size: 1.2em;
 }
+
 .skill {
   padding: 10px 20px;
   margin: 10px;
@@ -262,18 +274,22 @@ footer {
   color: #fff;
   text-align: center;
 }
+
 footer p {
   display: flex;
   text-align: center;
   align-items: center;
 }
+
 footer .container {
   display: flex;
   justify-content: space-between;
 }
+
 footer .footerdiv li {
   list-style-type: none;
 }
+
 footer a {
   color: #fff;
   text-decoration: none;
@@ -290,23 +306,29 @@ footer .container ul {
 footer .container ul li {
   margin: 10px;
 }
+
 .fa-brands {
   font-size: 20px;
 }
+
 footer div ul {
   display: flex;
   justify-content: space-between;
   list-style-type: none;
 }
+
 .experience {
   background-color: #18bc9c;
   color: white;
 }
+
 .hide {
   top: -100px;
 }
+
 .window {
-  display: block;
+  display: flex;
+  flex-direction: column;
   height: 90vh;
   width: 90vw;
   position: fixed;
@@ -322,32 +344,39 @@ footer div ul {
 .window h1 {
   margin: 50px;
 }
+
 .window img {
   margin: 20px;
 }
+
 .window p {
   margin: 15px;
 }
+
 .window a {
   text-decoration: none;
   color: #374054;
 }
+
 .exitIcon {
   position: absolute;
   top: 0;
   width: 1.4rem;
   right: 0;
 }
+
 .exitIcon:hover {
   scale: 1.3;
   cursor: pointer;
 }
+
 .project img {
   width: 300px;
   border-radius: 50%;
   background-color: #e4e4ea;
   padding: 10px;
 }
+
 .project {
   background-color: #18bc9c;
   width: 320px;
@@ -361,9 +390,11 @@ footer div ul {
   box-shadow: rgba(0, 0, 0, 0.6) 0px 3px 6px 0px;
   transition-duration: 250ms;
 }
+
 .window img:first-of-type {
   height: 40%;
 }
+
 .overlay {
   position: fixed;
   display: none;
@@ -374,6 +405,7 @@ footer div ul {
   z-index: 100;
   backdrop-filter: blur(3px);
 }
+
 section {
   min-height: 60vh;
   display: flex;
@@ -387,6 +419,7 @@ section {
   font-size: 2em;
   text-shadow: 1px 2px 2px rgba(0, 0, 0, 0.5);
 }
+
 .fa-angle-left {
   position: absolute;
   left: 1em;
@@ -394,11 +427,11 @@ section {
   font-size: 2em;
   text-shadow: 1px 2px 2px rgba(0, 0, 0, 0.5);
 }
+
 .fa-angle-left:hover,
 .fa-angle-right:hover {
   cursor: pointer;
   color: #dadada;
 }
-.callToAction {
-  display: block;
-}
+
+.callToAction {}
