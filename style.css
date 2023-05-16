@@ -399,3 +399,6 @@ section {
   cursor: pointer;
   color: #dadada;
 }
+.callToAction {
+  display: block;
+}
