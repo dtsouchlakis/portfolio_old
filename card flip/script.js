@@ -12,7 +12,7 @@ function initializeFunction(init) {
     if (init) {
         let winningCard;
         value = input.value;
-        winningCard = random(1, value);
+        winningCard = random(0, value);
         for (let index = 1; index <= init; index++) {
             let div = document.createElement("div");
             let flipCardInner = document.createElement("div");
